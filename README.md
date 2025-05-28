@@ -1,3 +1,6 @@
+![Maven Central Version](https://img.shields.io/maven-central/v/ie.briandouglas/BlueprintFactory)
+[![javadoc](https://javadoc.io/badge2/ie.briandouglas/BlueprintFactory/javadoc.svg)](https://javadoc.io/doc/ie.briandouglas/BlueprintFactory)
+
 # Blueprint Factory
 
 Create objects from reusable blueprints with flexible overrides.
@@ -17,6 +20,21 @@ It's designed to be used along with [Faker](https://github.com/DiUS/java-faker) 
 
 ## Installation
 
+### Maven
+
+```
+<dependency>
+    <groupId>ie.briandouglas</groupId>
+    <artifactId>BlueprintFactory</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+### Gradle
+
+```
+implementation group: 'ie.briandouglas', name: 'BlueprintFactory', version: '1.0.0'
+```
 
 ## Usage
 
@@ -24,7 +42,7 @@ It's designed to be used along with [Faker](https://github.com/DiUS/java-faker) 
 
 ### Define your Factory
 
-Extend the abstract `Factory<T>` and implement the `blueprint()` method to provide a default instance:
+Extend the abstract `BlueprintFactory<T>` and implement the `blueprint()` method to provide a default instance:
 
 ```java
 public class UserFactory extends BlueprintFactory<User> {
@@ -125,7 +143,7 @@ User user = userFactory
 ```java
 List<Role> roles = List.of(new Role("editor"), new Role("viewer"));
 User user = userFactory
-    .with(roleFactory::createFromVariants, new VariantList<>(roles), User::setRoles)
+    .with(roleFactory::create, new VariantList<>(roles), User::setRoles)
     .create();
 ```
 
