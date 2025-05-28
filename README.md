@@ -26,14 +26,14 @@ It's designed to be used along with [Faker](https://github.com/DiUS/java-faker) 
 <dependency>
     <groupId>ie.briandouglas</groupId>
     <artifactId>BlueprintFactory</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-implementation group: 'ie.briandouglas', name: 'BlueprintFactory', version: '1.0.1'
+implementation group: 'ie.briandouglas', name: 'BlueprintFactory', version: '1.0.2'
 ```
 
 ## Usage
