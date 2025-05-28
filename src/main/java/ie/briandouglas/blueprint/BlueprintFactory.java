@@ -39,7 +39,7 @@ public abstract class BlueprintFactory<T> {
      * @param variation a map of field names and values to override
      */
     public T create(Map<String, ?> variation) {
-        T instance = blueprint();
+        T instance = create();
         ObjectMerger.mergeNonNullFields(instance, variation);
         return instance;
     }
@@ -50,7 +50,7 @@ public abstract class BlueprintFactory<T> {
      * @param variation an object with override values
      */
     public T create(T variation) {
-        T instance = blueprint();
+        T instance = create();
         ObjectMerger.mergeNonNullFields(instance, variation);
         return instance;
     }

@@ -195,6 +195,46 @@ class BlueprintFactoryTest {
     }
 
     @Test
+    void testCreationWithCustomSetterAndManyMapVariantsWithAdditionalMapVariant() {
+        List<VariantMap> sequence = List.of(
+                new VariantMap(Map.of("name", "Strawberry")),
+                new VariantMap(Map.of("name", "Apple")),
+                new VariantMap(Map.of("name", "Orange"))
+        );
+
+        var result = storeFactory
+                .with(itemFactory::create, new VariantMapList(sequence), Store::setItems)
+                .create(Map.of("name", "test"));
+
+        var expected = sequence.stream()
+                .map(vm -> itemFactory.create(vm.data()))
+                .toList();
+
+        assertEquals(expected, result.getItems());
+    }
+
+    @Test
+    void testCreationWithCustomSetterAndManyMapVariantsWithAdditionalInstanceVariant() {
+        List<VariantMap> sequence = List.of(
+                new VariantMap(Map.of("name", "Strawberry")),
+                new VariantMap(Map.of("name", "Apple")),
+                new VariantMap(Map.of("name", "Orange"))
+        );
+
+        var instance = new Store();
+        instance.setName("test");
+        var result = storeFactory
+                .with(itemFactory::create, new VariantMapList(sequence), Store::setItems)
+                .create(instance);
+
+        var expected = sequence.stream()
+                .map(vm -> itemFactory.create(vm.data()))
+                .toList();
+
+        assertEquals(expected, result.getItems());
+    }
+
+    @Test
     void testCreationWithCustomSetterCreatingMany() {
         var result = storeFactory
                 .with(itemFactory::create, 3, Store::setItems)
