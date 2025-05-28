@@ -6,7 +6,7 @@
 
     <groupId>ie.briandouglas</groupId>
     <artifactId>BlueprintFactory</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>BlueprintFactory</name>
     <description>Create objects from reusable blueprints with flexible overrides.</description>
